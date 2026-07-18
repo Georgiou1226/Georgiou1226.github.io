@@ -1,0 +1,73 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { projects } from "../data/projects.js";
+
+const featured = projects.filter((p) => p.featured);
+---
+
+<Layout>
+  <section class="hero">
+    <h1>Data science and physical engineering.</h1>
+    <p class="hero-sub">
+      Simulation, machine learning, and instrumentation. Currently building
+      virtual instrumentation for biophysics at TU Dresden.
+    </p>
+  </section>
+
+  <section class="work-preview">
+    <div class="section-head">
+      <h2>Selected work</h2>
+      <a class="text-link" href="/work/">View all &rarr;</a>
+    </div>
+    <div class="grid">
+      {featured.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    max-width: 480px;
+    margin-bottom: 64px;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+    line-height: 1.25;
+    margin-bottom: 16px;
+  }
+
+  .hero-sub {
+    color: var(--text-secondary);
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 20px;
+  }
+
+  .section-head h2 {
+    font-size: 20px;
+  }
+
+  .section-head a {
+    font-size: 14px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 32px 24px;
+  }
+
+  @media (max-width: 480px) {
+    .hero h1 {
+      font-size: 28px;
+    }
+  }
+</style>

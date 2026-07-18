@@ -1,0 +1,58 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+// Placeholder series. Replace with real ones once you've picked your
+// selects, drop images in /public/photography/ and update the paths.
+const series = [
+  { title: "Series one", count: 0 },
+  { title: "Series two", count: 0 },
+  { title: "Series three", count: 0 },
+];
+---
+
+<Layout title="Photography" description="A separate practice, kept separate.">
+  <section>
+    <h1>Photography</h1>
+    <p class="intro">Selects, grouped loosely into a few series.</p>
+    <div class="grid">
+      {series.map((s) => (
+        <div class="placeholder">
+          <span>{s.title}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+</Layout>
+
+<style>
+  h1 {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .intro {
+    color: var(--text-secondary);
+    margin-bottom: 48px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .placeholder {
+    aspect-ratio: 3 / 4;
+    border-radius: var(--radius);
+    background: var(--bg-card);
+    border: 1px dashed var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+</style>
